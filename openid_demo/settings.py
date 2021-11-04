@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts',
     'mozilla_django_oidc',
 ]
 
@@ -59,7 +60,7 @@ ROOT_URLCONF = 'openid_demo.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -131,8 +132,8 @@ OIDC_OP_AUTHORIZATION_ENDPOINT = 'https://api.bloksec.io/oidc/auth'
 OIDC_OP_TOKEN_ENDPOINT = 'https://api.bloksec.io/oidc/token'
 OIDC_OP_USER_ENDPOINT = 'https://api.bloksec.io/oidc/me'
 
-LOGIN_REDIRECT_URL = ''
-LOGOUT_REDIRECT_URL = ''
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
 
 # Refer for endpoints
 # https://api.bloksec.io/oidc/.well-known/openid-configuration
