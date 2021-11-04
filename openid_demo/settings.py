@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
 AUTHENTICATION_BACKENDS = (
     'mozilla_django_oidc.auth.OIDCAuthenticationBackend',
+    'django.contrib.auth.backends.ModelBackend',
 )
 
 MIDDLEWARE = [
@@ -132,8 +133,11 @@ OIDC_OP_AUTHORIZATION_ENDPOINT = 'https://api.bloksec.io/oidc/auth'
 OIDC_OP_TOKEN_ENDPOINT = 'https://api.bloksec.io/oidc/token'
 OIDC_OP_USER_ENDPOINT = 'https://api.bloksec.io/oidc/me'
 
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'home'
+OIDC_OP_JWKS_ENDPOINT = 'https://api.bloksec.io/oidc/jwks'
+OIDC_RP_SIGN_ALGO = 'RS256'
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 # Refer for endpoints
 # https://api.bloksec.io/oidc/.well-known/openid-configuration

@@ -6,10 +6,14 @@
 {% block content %}
 {% if user.is_authenticated %}
   Hi {{ user.username }}!
-  <p><a href="{% url 'logout' %}">Log Out</a></p>
+<!--  <p><a href='https://api.bloksec.io/oidc/session/end?post_logout_redirect_uri=http%3A%2F%2F127.0.0.1%3A8000%2F'>Log Out</a></p>-->
+<form action="{% url 'oidc_logout' %}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="logout">
+</form>
   <p><a href="{% url 'password_reset' %}">Reset Password</a></p>
 {% else %}
   <p>You are not logged in</p>
-  <a href="{% url 'login' %}">Log In</a>
+  <a href="{% url 'oidc_authentication_init' %}">Log In</a>
 {% endif %}
 {% endblock %}
